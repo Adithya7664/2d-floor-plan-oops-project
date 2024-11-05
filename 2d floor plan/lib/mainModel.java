@@ -32,23 +32,24 @@ class mainModel {
         paneltop.setLayout(new GridLayout(1, 10, 3, 3));
         // for horizontal buttons
 
-        JButton button1 = new JButton("ADD A DOOR");
-        JButton button2 = new JButton("ADD A WINDOW");
+        // top. pannel buttons and checkbox
+        JButton door = new JButton("ADD A DOOR");
+        JButton window = new JButton("ADD A WINDOW");
 
         String[] s1 = { "ADD A ROOM", "DragAndDrop", "FromPrevoiusROOM" };
-        JComboBox comboBox1 = new JComboBox(s1);
+        JComboBox room = new JComboBox(s1);
 
         String[] s2 = { "ADD A FURNITURE", "Bed", "Table", "Sofa", "Chair", "Wardrobe", "Desk", "TV", "Shelf" };
-        JComboBox comboBox2 = new JComboBox(s2);
+        JComboBox furniture = new JComboBox(s2);
 
         String[] s3 = { "ADD A FIXTURES", "Commode", "Sink", "Shower", "Cupboard", "Bathtub", "Fridge", };
-        JComboBox comboBox3 = new JComboBox(s3);
+        JComboBox fixtures = new JComboBox(s3);
 
-        paneltop.add(comboBox1);
-        paneltop.add(button1);
-        paneltop.add(button2);
-        paneltop.add(comboBox2);
-        paneltop.add(comboBox3);
+        paneltop.add(room);
+        paneltop.add(door);
+        paneltop.add(window);
+        paneltop.add(furniture);
+        paneltop.add(fixtures);
         paneltop.setVisible(true);
 
         // DRAWING BORD /
