@@ -89,10 +89,31 @@ class mainModel {
                         System.out.println("Sofa selected");
                         // Add specific action for Sofa
                         break;
+                    case "Chair":
+                        System.out.println("Sofa selected");
+                        // Add specific action for Sofa
+                        break;
+                    case "Wardrobe":
+                        System.out.println("Wardrobe selected");
+                        // Add specific action for Wardrobe
+                        break;
+                    case "Desk":
+                        System.out.println("Desk selected");
+                        // Add specific action for Desk
+                        break;
+                    case "TV":
+                        System.out.println("TV selected");
+                        // Add specific action for TV
+                        break;
+                    case "Shelf":
+                        System.out.println("Shelf selected");
+                        // Add pecific action for shelf
+                        break;
                     // Add more cases as needed for other furniture items
                     default:
                         System.out.println("No specific furniture selected");
                         break;
+
                 }
             }
         });
