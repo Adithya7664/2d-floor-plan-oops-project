@@ -1,4 +1,3 @@
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,6 +13,7 @@ class mainModel {
 
     frame f;
     RoomObjects o;
+    rooms room;
 
     public static void main(String[] args) {
         mainModel m = new mainModel();
@@ -21,6 +21,8 @@ class mainModel {
         m.f.setLayout(new BorderLayout());
 
         m.o = new RoomObjects();
+
+        m.room = new rooms();
 
         // SIDE PANNEL / SIDEBAR
         JPanel panelSIDE = new JPanel();
@@ -88,6 +90,10 @@ class mainModel {
                 if ("DragAndDrop".equals(selectedRoom)) {
                     System.out.println("DragAndDrop option selected for Room");
                     // Add specific action here for "DragAndDrop"
+                    JPanel proom = new JPanel();
+                    proom = m.room.rooms();
+                    panelDB.add(proom);
+                    panelDB.setVisible(true);
 
                 } else if ("FromPreviousROOM".equals(selectedRoom)) {
                     System.out.println("FromPreviousROOM option selected for Room");
@@ -96,10 +102,12 @@ class mainModel {
             }
         });
 
-        door.addActionListener((actionEvent) -> {
+        door.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
 
-            System.out.println("Selected door: ");
-
+                System.out.println("Selected door: ");
+            }
         });
 
         // action listeners for funiture combobox
@@ -194,6 +202,7 @@ class mainModel {
         });
 
         paneltop.setVisible(true);
+        panelDB.setVisible(true);
 
         paneltop.setVisible(true);
         panelSIDE.setVisible(true);
