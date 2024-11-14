@@ -16,13 +16,19 @@ class mainModel {
     rooms room;
 
     public static void main(String[] args) {
+
+        int X = 0;
+        int Y = 0;
+        int length = 0;
+        int height = 0;
+
         mainModel m = new mainModel();
         m.f = new frame();
         m.f.setLayout(new BorderLayout());
 
         m.o = new RoomObjects();
 
-        m.room = new rooms();
+        m.room = new rooms(0, 0, 0, 0);
 
         // SIDE PANNEL / SIDEBAR
         JPanel panelSIDE = new JPanel();
@@ -65,6 +71,7 @@ class mainModel {
         panelDB.setBackground(Color.BLUE);
         panelDB.setPreferredSize(new Dimension(100, 100));
         m.f.add(panelDB, BorderLayout.CENTER);
+        panelDB.setLayout(null);
 
         //
         JPanel panelSIDE1 = new JPanel();
@@ -77,7 +84,7 @@ class mainModel {
         JPanel panelSIDE4 = new JPanel();
         panelSIDE4.setBackground(Color.BLACK);
         panelSIDE4.setPreferredSize(new Dimension(150, 100));
-        panelSIDE.add(panelSIDE4, BorderLayout.SOUTH);
+        panelSIDE.add(panelSIDE4);
         //
 
         // Add action listener for the room combo box
@@ -92,6 +99,9 @@ class mainModel {
                     // Add specific action here for "DragAndDrop"
                     JPanel proom = new JPanel();
                     proom = m.room.rooms();
+
+                    // proom.setBounds(X, Y, length, height);
+
                     panelDB.add(proom);
                     panelDB.setVisible(true);
 
