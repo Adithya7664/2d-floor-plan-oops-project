@@ -13,10 +13,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class rooms {
-
+    String name;
     int x, y, width, height;
 
-    public rooms(int x, int y, int width, int height) {
+    public rooms(int x, int y, int width, int height, String name) {
+        this.name = name;
         this.x = x;
         this.y = y;
         this.width = width;
@@ -33,7 +34,7 @@ public class rooms {
     ArrayList<rooms> rooms = new ArrayList<>();
 
     public boolean addRoom(int x, int y, int width, int height) {
-        rooms newRoom = new rooms(x, y, width, height);
+        rooms newRoom = new rooms(x, y, width, height, name);
 
         // Check for overlaps with existing rooms
         for (rooms rooms : rooms) {

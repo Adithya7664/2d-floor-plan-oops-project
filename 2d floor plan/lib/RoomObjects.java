@@ -35,6 +35,8 @@ public class RoomObjects {
 
         JButton submit = new JButton("SUBMIT");
         JTextField tfbed = new JTextField("Enter the name of the bed", 20);
+        JTextField tfXbed = new JTextField("Enter the horizontal - position of the bed", 20);
+        JTextField tfYbed = new JTextField("Enter the virtical - position of the bed", 20);
 
         JLabel labelbed = new JLabel();
 

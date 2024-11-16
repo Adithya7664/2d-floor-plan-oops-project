@@ -29,7 +29,7 @@ class mainModel {
 
         m.o = new RoomObjects();
 
-        m.room = new rooms(0, 0, 0, 0);
+        m.room = new rooms(0, 0, 0, 0, "name");
 
         // SIDE PANNEL / SIDEBAR
         JPanel panelSIDE = new JPanel();
@@ -41,10 +41,10 @@ class mainModel {
         // INSTRUMENT PANNEL / TOPBAR /
         JPanel paneltop = new JPanel();
         paneltop.setBackground(Color.BLACK);
-        paneltop.setPreferredSize(new Dimension(100, 70));
+        paneltop.setPreferredSize(new Dimension(100, 30));
         m.f.add(paneltop, BorderLayout.NORTH);
         // layout = = grid layout
-        paneltop.setLayout(new GridLayout(1, 10, 3, 3));
+        paneltop.setLayout(new GridLayout(1, 10, 0, 3));
         // for horizontal buttons
 
         // top. pannel buttons and checkbox
