@@ -90,20 +90,20 @@ public class rooms {
                 try {
                     proom.setBounds(Integer.parseInt(tfXroom.getText()), Integer.parseInt(tfYroom.getText()),
                             Integer.parseInt(tfLroom.getText()), Integer.parseInt(tfHroom.getText()));
+                    room.dispose();
+                    proom.setVisible(true);
                 } catch (NumberFormatException ex) {
-                    System.out.println("Invalid input");
-                    JOptionPane.showMessageDialog(null,
-                            "please enter a number in the number box", "error", JOptionPane.ERROR_MESSAGE);
 
                     ea = true;
-                }
+                    System.out.println("Invalid input");
+                    int input = JOptionPane.showOptionDialog(null,
+                            "please enter a number in the number box", "error", JOptionPane.OK_CANCEL_OPTION,
+                            JOptionPane.INFORMATION_MESSAGE, null, null, null);
 
-                if (!ea) {
-                    proom.setVisible(true);
-                    room.dispose();
-                } else {
-                    room.dispose();
-                    rooms();
+                    if (input == JOptionPane.OK_OPTION) {
+                        room.dispose();
+                    }
+
                 }
 
             }

@@ -1,11 +1,18 @@
 import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.plaf.basic.BasicTextUI;
 
 public class RoomObjects {
     ImageIcon Bed = new ImageIcon();
@@ -45,6 +52,7 @@ public class RoomObjects {
         fbed.setVisible(true);
 
         // Return the panel
+
         return labelbed;
     }
 
@@ -336,4 +344,53 @@ public class RoomObjects {
         return labelfridge;
 
     }
+}
+
+class DragPanel { // extends Jpanel{
+    ImageIcon image = new ImageIcon("bed.png");
+    final int WIDTH = image.getIconWidth();
+    final int HEIGHT = image.getIconHeight();
+    Point imageCorner;
+    Point prevPt;
+
+    public void DragPanel() {
+        imageCorner = new Point(0, 0);
+        ClickListener clicklistener = new ClickListener();
+        DragListener draglistener = new DragListener();
+        this.addMouseListener(clicklistener);
+        this.addMouseListener(draglistener);
+    }
+    // public void paintComponent(Graphics g){
+
+    private void addMouseListener(ClickListener clicklistener) {
+        // TODO Auto-generated method stub
+        prevPt = e.getPoint();
+        throw new UnsupportedOperationException("Unimplemented method 'addMouseListener'");
+    }
+
+    private void addMouseListener(DragListener draglistener) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addMouseListener'");
+    }
+
+    // }
+
+    class ClickListener extends MouseAdapter {
+        public void mousePressed(MouseEvent e) {
+            prevPt = e.getPoint();
+        }
+
+    }
+
+    class DragListener extends MouseMotionAdapter {
+        public void mouseDragged(MouseEvent e) {
+            Point currentPt = e.getPoint();
+            imageCorner.translate(
+                    (int) (currentPt.getX() - prevPt.getX()),
+                    (int) (currentPt.getY() - prevPt.getY()));
+            prevPt = currentPt;
+            // repaint();
+        }
+    }
+
 }

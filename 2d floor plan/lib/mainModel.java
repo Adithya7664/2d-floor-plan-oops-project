@@ -14,6 +14,7 @@ class mainModel {
     frame f;
     RoomObjects o;
     rooms room;
+    DragPanel dp;
 
     public static void main(String[] args) {
 
@@ -131,6 +132,8 @@ class mainModel {
                         // Add specific action for Bed
                         JLabel lbed = new JLabel();
                         lbed = m.o.Bed();
+                        m.dp.DragPanel();
+
                         panelDB.add(lbed);
 
                         break;
