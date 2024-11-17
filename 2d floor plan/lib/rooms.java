@@ -4,6 +4,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
@@ -31,7 +33,7 @@ public class rooms {
                 this.y >= other.y + other.height); // this room is below other
     }
 
-
+    List<rooms> rooms = new ArrayList<>();
     public boolean addRoom(int x, int y, int width, int height) {
         rooms newRoom = new rooms(x, y, width, height, name);
 

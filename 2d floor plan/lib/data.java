@@ -44,10 +44,11 @@ public class data implements Serializable{
         return "Room{name='" + name + "', height=" + height + ", width=" + width +
                ", x=" + x + ", y=" + y + "}";
     }
+    List<rooms> rooms = new ArrayList<>();
     public class FloorPlanner{
-        public static void main(String[] args) {
+        public void file(){
         // List to hold room objects
-        List<rooms> rooms = new ArrayList<>();
+        
         
         // Add sample rooms
         
