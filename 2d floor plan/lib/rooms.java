@@ -9,7 +9,7 @@ import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.JPanel;import javax.swing.JTextField;
 import javax.swing.JTextField;
 
 public class rooms {
@@ -31,7 +31,6 @@ public class rooms {
                 this.y >= other.y + other.height); // this room is below other
     }
 
-    ArrayList<rooms> rooms = new ArrayList<>();
 
     public boolean addRoom(int x, int y, int width, int height) {
         rooms newRoom = new rooms(x, y, width, height, name);
@@ -48,8 +47,9 @@ public class rooms {
         return true;
     }
 
-    public ArrayList<rooms> getRooms() {
-        return rooms;
+    public void getData(int x,int y,int length,int height){
+       
+
     }
 
     Boolean ea = false;
@@ -88,10 +88,19 @@ public class rooms {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Submit button clicked");
                 proom.setName(tfroom.getText());
+                room.dispose();
                 try {
                     proom.setBounds(Integer.parseInt(tfXroom.getText()), Integer.parseInt(tfYroom.getText()),
                             Integer.parseInt(tfLroom.getText()), Integer.parseInt(tfHroom.getText()));
-                    room.dispose();
+
+                    Boolean a ;
+                    int x=0,y=0,l=0,h=0;
+                    x = Integer.parseInt(tfXroom.getText());
+                    y = Integer.parseInt(tfYroom.getText());
+                    l = Integer.parseInt(tfLroom.getText());
+                    h = Integer.parseInt(tfHroom.getText());
+                    addRoom(x,y,l,h);
+                    
                     proom.setVisible(true);
                 } catch (NumberFormatException ex) {
 
