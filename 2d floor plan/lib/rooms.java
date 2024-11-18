@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
@@ -81,6 +82,7 @@ public class rooms {
 
         JTextField tfHroom = new JTextField("Enter the width of the ROOM", 20);
 
+        addRoom(x, y, width, height, name)
         String[] Stype = { "Hall", "Kitchen", "bedroom", "bathroom" };
 
         JComboBox<String> type = new JComboBox<>(Stype);
@@ -166,6 +168,10 @@ public class rooms {
     }
 
     private void moveRoom(MouseEvent e) {
+
+        // if (rooms.overlaps(selectedRoom)) {
+        // return false; // Room overlaps, can't add it
+
         if (selectedRoom != null) {
             // Temporarily set floor layout to null for free dragging
 
@@ -186,5 +192,6 @@ public class rooms {
 
         }
     }
+}
 
 }
