@@ -1,8 +1,11 @@
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
@@ -24,8 +27,14 @@ public class rooms {
         this.height = height;
     }
 
+    private JPanel selectedRoom;
+    private Point initialClick;
+    private Point PrevCoord;
+
     public boolean overlaps(rooms other) {
-        return !(this.x + this.width <= other.x || // this room is to the left of other
+        return !(this.x + this.width <= other.x || // this room is to the left of
+
+        // other
                 this.x >= other.x + other.width || // this room is to the right of other
                 this.y + this.height <= other.y || // this room is above other
                 this.y >= other.y + other.height); // this room is below other
@@ -33,7 +42,7 @@ public class rooms {
 
     ArrayList<rooms> rooms = new ArrayList<>();
 
-    public boolean addRoom(int x, int y, int width, int height) {
+    public boolean addRoom(int x, int y, int width, int height, String name) {
         rooms newRoom = new rooms(x, y, width, height, name);
 
         // Check for overlaps with existing rooms
@@ -79,7 +88,6 @@ public class rooms {
         JPanel proom = new JPanel();
         proom.setSize(100, 100);
         proom.setVisible(false);
-
         JButton submit = new JButton("SUBMIT");
 
         JButton color = new JButton("chose a color");
@@ -91,6 +99,31 @@ public class rooms {
                 try {
                     proom.setBounds(Integer.parseInt(tfXroom.getText()), Integer.parseInt(tfYroom.getText()),
                             Integer.parseInt(tfLroom.getText()), Integer.parseInt(tfHroom.getText()));
+
+                    int panelHeight = Integer.parseInt(tfLroom.getText());
+                    int panelWidth = Integer.parseInt(tfHroom.getText());
+
+                    proom.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mousePressed(MouseEvent e) {
+                            selectedRoom = proom;
+                            initialClick = e.getPoint();
+                            PrevCoord = ((JPanel) e.getSource()).getLocation();
+
+                        }
+
+                    });
+                    proom.addMouseMotionListener(new MouseAdapter() {
+                        @Override
+                        public void mouseDragged(MouseEvent e) {
+                            moveRoom(e);
+                        }
+                    });
+                    ////////
+
+                    proom.setBounds(proom.getLocation().x, proom.getLocation().y,
+                            panelWidth, panelHeight);
+
                     room.dispose();
                     proom.setVisible(true);
                 } catch (NumberFormatException ex) {
@@ -130,6 +163,28 @@ public class rooms {
 
         return proom;
 
+    }
+
+    private void moveRoom(MouseEvent e) {
+        if (selectedRoom != null) {
+            // Temporarily set floor layout to null for free dragging
+
+            // Calculate the new location
+            int thisX = selectedRoom.getX();
+            int thisY = selectedRoom.getY();
+
+            // Get the offset based on initial click
+            int xMoved = e.getX() - initialClick.x;
+            int yMoved = e.getY() - initialClick.y;
+
+            // Move the room to the new location
+            int newX = thisX + xMoved;
+            int newY = thisY + yMoved;
+            selectedRoom.setLocation(newX, newY);
+
+            // Refresh the container to show the updated location
+
+        }
     }
 
 }

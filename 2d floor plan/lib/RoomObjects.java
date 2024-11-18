@@ -1,22 +1,20 @@
+import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.plaf.basic.BasicTextUI;
 
 public class RoomObjects {
-    ImageIcon Bed = new ImageIcon();
-    ImageIcon Table = new ImageIcon();
+    ImageIcon Bed = new ImageIcon("bed.png");
+    ImageIcon Table = new ImageIcon("table.png");
     ImageIcon Sofa = new ImageIcon();
     ImageIcon Chair = new ImageIcon();
     ImageIcon diningSet = new ImageIcon();
@@ -30,6 +28,7 @@ public class RoomObjects {
     public JLabel Bed() {
         frame fbed = new frame();
         fbed.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        fbed.setBackground(Color.BLACK);
         fbed.setSize(580, 400);
         fbed.setLayout(new FlowLayout());
 
@@ -41,16 +40,29 @@ public class RoomObjects {
         JLabel labelbed = new JLabel();
 
         submit.addActionListener(new ActionListener() {
+
             public void actionPerformed(ActionEvent e) {
-                String name = tfbed.getText();
-                labelbed.setName(name);
-                labelbed.setText(name);
+                if (e.getSource() == submit) {
+                    String name = tfbed.getText();
+                    labelbed.setName(name);
+                    labelbed.setText(name);
+                    labelbed.setBackground(Color.black);
+                    labelbed.setBounds(100, 100, 100, 200);
+                    System.out.println("bed has been printed");
+                    labelbed.setIcon(Bed);
+                    labelbed.setVisible(true);
+                }
+
             }
         });
 
         fbed.add(tfbed);
+        fbed.add(tfXbed);
+        fbed.add(tfYbed);
+
         fbed.add(submit);
         fbed.pack();
+
         fbed.setVisible(true);
 
         // Return the panel

@@ -16,7 +16,18 @@ class mainModel {
     rooms room;
     DragPanel dp;
 
+    // JPanel panelDB;
+
     public static void main(String[] args) {
+
+        // file saving
+        /*
+         * public void SaveFile(){
+         * JFileChooser fileChooser = new JFileChooser();
+         * int option = fileChooser.showSaveDialog(frame);
+         * 
+         * }
+         */
 
         int X = 0;
         int Y = 0;
@@ -28,7 +39,6 @@ class mainModel {
         m.f.setLayout(new BorderLayout());
 
         m.o = new RoomObjects();
-
         m.room = new rooms(0, 0, 0, 0, "name");
 
         // SIDE PANNEL / SIDEBAR
@@ -101,9 +111,11 @@ class mainModel {
                     JPanel proom = new JPanel();
                     proom = m.room.rooms();
 
-                    // proom.setBounds(X, Y, length, height);
+                    proom.setBounds(X, Y, length, height);
 
                     panelDB.add(proom);
+                    panelDB.revalidate();
+                    panelDB.repaint();
                     panelDB.setVisible(true);
 
                 } else if ("FromPreviousROOM".equals(selectedRoom)) {
@@ -130,10 +142,15 @@ class mainModel {
                     case "Bed":
                         System.out.println("Bed selected");
                         // Add specific action for Bed
+
+                        System.out.println("1");
+
                         JLabel lbed = new JLabel();
                         lbed = m.o.Bed();
+                        System.out.println("2");
                         m.dp.DragPanel();
-
+                        System.out.println("3");
+                        // lbed.setVisible(true);
                         panelDB.add(lbed);
 
                         break;
@@ -222,5 +239,4 @@ class mainModel {
         m.f.setVisible(true);
 
     }
-
 }
