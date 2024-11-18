@@ -12,9 +12,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+<<<<<<< Updated upstream
 public class RoomObjects {
     ImageIcon Bed = new ImageIcon("bed.png");
     ImageIcon Table = new ImageIcon("table.png");
+=======
+public class RoomObjects implements ActionListener {
+
+    ImageIcon Bed = new ImageIcon();
+    ImageIcon Table = new ImageIcon();
+>>>>>>> Stashed changes
     ImageIcon Sofa = new ImageIcon();
     ImageIcon Chair = new ImageIcon();
     ImageIcon diningSet = new ImageIcon();
@@ -25,21 +32,42 @@ public class RoomObjects {
     ImageIcon Washbasin = new ImageIcon();
     ImageIcon Fridge = new ImageIcon();
 
+    JButton submit;
+
     public JLabel Bed() {
-        frame fbed = new frame();
+        JFrame fbed = new JFrame();
         fbed.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         fbed.setBackground(Color.BLACK);
         fbed.setSize(580, 400);
         fbed.setLayout(new FlowLayout());
 
-        JButton submit = new JButton("SUBMIT");
+        JFrame fimg = new JFrame();
+        fimg.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        fimg.setSize(780, 600);
+        fbed.setLayout(new FlowLayout());
+
+        ImageIcon bedicon = new ImageIcon("bed.png");
+        /*
+         * JButton submitButton = new JButton("Click Me");
+         * 
+         * submitButton.addActionListener(new ActionListener() {
+         * public void actionPerformed(ActionEvent e) {
+         * JOptionPane.showMessageDialog(fbed, "OK YOU CLICLED ME");
+         * }
+         * });
+         */
+
+        submit = new JButton("SUBMIT", bedicon);
         JTextField tfbed = new JTextField("Enter the name of the bed", 20);
         JTextField tfXbed = new JTextField("Enter the horizontal - position of the bed", 20);
         JTextField tfYbed = new JTextField("Enter the virtical - position of the bed", 20);
 
         JLabel labelbed = new JLabel();
+        // labelbed.setIcon(new ImageIcon("bed.png")); // Set your image here
+        // ImageIcon bedicon = new ImageIcon("bed.png");
 
         submit.addActionListener(new ActionListener() {
+<<<<<<< Updated upstream
 
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == submit) {
@@ -53,22 +81,102 @@ public class RoomObjects {
                     labelbed.setVisible(true);
                 }
 
+=======
+            // System.out.println("I am here");
+            public void actionPerformed(ActionEvent e) {
+                // JOptionPane.showMessageDialog(fbed, "OK YOU CLICKED ME");
+                ImageIcon bedicon = new ImageIcon("bed.png");
+                JLabel labelbed1 = new JLabel(bedicon);
+                // labelbed.(new ImageIcon("bed.png"));
+                fbed.add(labelbed1);
+                // JOptionPane.showMessageDialog(fbed, "OK YOU CLICKED ME111");
+                // String name = tfbed.getText();
+                // labelbed.setName(name);
+                // labelbed.setText(name);
+>>>>>>> Stashed changes
             }
         });
+
+        // Add mouse listeners for dragging
+        MouseAdapter mouseAdapter = new MouseAdapter() {
+            Point initialClick;
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                initialClick = e.getPoint();
+                labelbed.getComponentAt(initialClick);
+            }
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                // Get the location of the window
+                int thisX = labelbed.getLocation().x;
+                int thisY = labelbed.getLocation().y;
+
+                // Determine how much the mouse moved since the initial click
+                int xMoved = e.getX() - initialClick.x;
+                int yMoved = e.getY() - initialClick.y;
+
+                // Move the label to this position
+                int X = thisX + xMoved;
+                int Y = thisY + yMoved;
+                labelbed.setLocation(X, Y);
+            }
+        };
+
+        labelbed.addMouseListener(mouseAdapter);
+        labelbed.addMouseMotionListener(mouseAdapter);
 
         fbed.add(tfbed);
         fbed.add(tfXbed);
         fbed.add(tfYbed);
 
         fbed.add(submit);
+        // fbed.add(submitButton);
+        // submit.addActionListener(this);
+        // fbed.add(labelbed);
         fbed.pack();
 
         fbed.setVisible(true);
 
-        // Return the panel
-
         return labelbed;
     }
+
+    // public static void main(String[] args) {
+    // SwingUtilities.invokeLater(() -> new DraggableImage().Bed());
+    // }
+
+    /*
+     * public JLabel Bed() {
+     * frame fbed = new frame();
+     * fbed.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+     * fbed.setSize(580, 400);
+     * fbed.setLayout(new FlowLayout());
+     * 
+     * JButton submit = new JButton("SUBMIT");
+     * JTextField tfbed = new JTextField("Enter the name of the bed", 20);
+     * 
+     * JLabel labelbed = new JLabel();
+     * 
+     * submit.addActionListener(new ActionListener() {
+     * public void actionPerformed(ActionEvent e) {
+     * String name = tfbed.getText();
+     * labelbed.setName(name);
+     * labelbed.setText(name);
+     * }
+     * });
+     * 
+     * fbed.add(tfbed);
+     * fbed.add(submit);
+     * fbed.pack();
+     * fbed.setVisible(true);
+     * 
+     * // Return the panel
+     * 
+     * return labelbed;
+     * }
+     * 
+     */
 
     public JLabel Table() {
         frame ftable = new frame();
@@ -357,6 +465,12 @@ public class RoomObjects {
         // Return the panel
         return labelfridge;
 
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
     }
 }
 
