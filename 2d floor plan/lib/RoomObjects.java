@@ -12,16 +12,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-<<<<<<< Updated upstream
-public class RoomObjects {
-    ImageIcon Bed = new ImageIcon("bed.png");
-    ImageIcon Table = new ImageIcon("table.png");
-=======
 public class RoomObjects implements ActionListener {
 
     ImageIcon Bed = new ImageIcon();
     ImageIcon Table = new ImageIcon();
->>>>>>> Stashed changes
     ImageIcon Sofa = new ImageIcon();
     ImageIcon Chair = new ImageIcon();
     ImageIcon diningSet = new ImageIcon();
@@ -67,7 +61,6 @@ public class RoomObjects implements ActionListener {
         // ImageIcon bedicon = new ImageIcon("bed.png");
 
         submit.addActionListener(new ActionListener() {
-<<<<<<< Updated upstream
 
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == submit) {
@@ -81,19 +74,17 @@ public class RoomObjects implements ActionListener {
                     labelbed.setVisible(true);
                 }
 
-=======
-            // System.out.println("I am here");
-            public void actionPerformed(ActionEvent e) {
-                // JOptionPane.showMessageDialog(fbed, "OK YOU CLICKED ME");
-                ImageIcon bedicon = new ImageIcon("bed.png");
-                JLabel labelbed1 = new JLabel(bedicon);
-                // labelbed.(new ImageIcon("bed.png"));
-                fbed.add(labelbed1);
-                // JOptionPane.showMessageDialog(fbed, "OK YOU CLICKED ME111");
-                // String name = tfbed.getText();
-                // labelbed.setName(name);
-                // labelbed.setText(name);
->>>>>>> Stashed changes
+                // System.out.println("I am here");
+
+                // // JOptionPane.showMessageDialog(fbed, "OK YOU CLICKED ME");
+                // ImageIcon bedicon = new ImageIcon("bed.png");
+                // JLabel labelbed1 = new JLabel(bedicon);
+                // // labelbed.(new ImageIcon("bed.png"));
+                // fbed.add(labelbed1);
+                // // JOptionPane.showMessageDialog(fbed, "OK YOU CLICKED ME111");
+                // // String name = tfbed.getText();
+                // // labelbed.setName(name);
+                // // labelbed.setText(name);
             }
         });
 
@@ -146,37 +137,34 @@ public class RoomObjects implements ActionListener {
     // SwingUtilities.invokeLater(() -> new DraggableImage().Bed());
     // }
 
-    /*
-     * public JLabel Bed() {
-     * frame fbed = new frame();
-     * fbed.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-     * fbed.setSize(580, 400);
-     * fbed.setLayout(new FlowLayout());
-     * 
-     * JButton submit = new JButton("SUBMIT");
-     * JTextField tfbed = new JTextField("Enter the name of the bed", 20);
-     * 
-     * JLabel labelbed = new JLabel();
-     * 
-     * submit.addActionListener(new ActionListener() {
-     * public void actionPerformed(ActionEvent e) {
-     * String name = tfbed.getText();
-     * labelbed.setName(name);
-     * labelbed.setText(name);
-     * }
-     * });
-     * 
-     * fbed.add(tfbed);
-     * fbed.add(submit);
-     * fbed.pack();
-     * fbed.setVisible(true);
-     * 
-     * // Return the panel
-     * 
-     * return labelbed;
-     * }
-     * 
-     */
+    // public JLabel Bed() {
+    // frame fbed = new frame();
+    // fbed.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    // fbed.setSize(580, 400);
+    // fbed.setLayout(new FlowLayout());
+
+    // JButton submit = new JButton("SUBMIT");
+    // JTextField tfbed = new JTextField("Enter the name of the bed", 20);
+
+    // JLabel labelbed = new JLabel();
+
+    // submit.addActionListener(new ActionListener() {
+    // public void actionPerformed(ActionEvent e) {
+    // String name = tfbed.getText();
+    // labelbed.setName(name);
+    // labelbed.setText(name);
+    // }
+    // });
+
+    // fbed.add(tfbed);
+    // fbed.add(submit);
+    // fbed.pack();
+    // fbed.setVisible(true);
+
+    // // Return the panel
+
+    // return labelbed;
+    // }// End of Bed method
 
     public JLabel Table() {
         frame ftable = new frame();
@@ -491,6 +479,7 @@ class DragPanel { // extends Jpanel{
     // public void paintComponent(Graphics g){
 
     private void addMouseListener(ClickListener clicklistener) {
+        /* */ /* */ MouseEvent e = null;/* */ /* */
         // TODO Auto-generated method stub
         prevPt = e.getPoint();
         throw new UnsupportedOperationException("Unimplemented method 'addMouseListener'");

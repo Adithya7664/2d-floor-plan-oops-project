@@ -82,7 +82,6 @@ public class rooms {
 
         JTextField tfHroom = new JTextField("Enter the width of the ROOM", 20);
 
-        addRoom(x, y, width, height, name)
         String[] Stype = { "Hall", "Kitchen", "bedroom", "bathroom" };
 
         JComboBox<String> type = new JComboBox<>(Stype);
@@ -102,8 +101,19 @@ public class rooms {
                     proom.setBounds(Integer.parseInt(tfXroom.getText()), Integer.parseInt(tfYroom.getText()),
                             Integer.parseInt(tfLroom.getText()), Integer.parseInt(tfHroom.getText()));
 
+                    proom.setName(tfroom.getText());
+
                     int panelHeight = Integer.parseInt(tfLroom.getText());
                     int panelWidth = Integer.parseInt(tfHroom.getText());
+
+                    int x = 0, y = 0, l = 0, h = 0;
+                    x = Integer.parseInt(tfXroom.getText());
+                    y = Integer.parseInt(tfYroom.getText());
+                    l = Integer.parseInt(tfLroom.getText());
+                    h = Integer.parseInt(tfHroom.getText());
+                    String n = tfroom.getText();
+                    // addRoom(x, y, l, h);
+                    addRoom(x, y, l, h, n);
 
                     proom.addMouseListener(new MouseAdapter() {
                         @Override
@@ -186,12 +196,27 @@ public class rooms {
             // Move the room to the new location
             int newX = thisX + xMoved;
             int newY = thisY + yMoved;
-            selectedRoom.setLocation(newX, newY);
+            String s = selectedRoom.getName();
+
+            for (rooms rooms : rooms) {
+                if (rooms.getName().equals(s)) {
+                    if (!rooms.overlaps(rooms)) {
+                        // Room overlaps, can't add it
+                        selectedRoom.setLocation(newX, newY);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Room overlaps, can't add it");
+
+                    }
+                }
+            }
 
             // Refresh the container to show the updated location
 
         }
     }
-}
 
+    private Object getName() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getName'");
+    }
 }
