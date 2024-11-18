@@ -151,7 +151,11 @@ class mainModel {
                         m.dp.DragPanel();
                         System.out.println("3");
                         // lbed.setVisible(true);
-                        panelDB.add(lbed);
+                        JPanel lroom = new JPanel();
+                        lroom = m.room.rooms();
+                        lroom.add(lbed);
+                        panelDB.add(lroom);
+                        
 
                         break;
                     case "Table":

@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
@@ -88,6 +87,7 @@ public class rooms {
 
         JPanel proom = new JPanel();
         proom.setSize(100, 100);
+        proom.setLayout(null);
         proom.setVisible(false);
         JButton submit = new JButton("SUBMIT");
 
@@ -101,19 +101,8 @@ public class rooms {
                     proom.setBounds(Integer.parseInt(tfXroom.getText()), Integer.parseInt(tfYroom.getText()),
                             Integer.parseInt(tfLroom.getText()), Integer.parseInt(tfHroom.getText()));
 
-                    proom.setName(tfroom.getText());
-
                     int panelHeight = Integer.parseInt(tfLroom.getText());
                     int panelWidth = Integer.parseInt(tfHroom.getText());
-
-                    int x = 0, y = 0, l = 0, h = 0;
-                    x = Integer.parseInt(tfXroom.getText());
-                    y = Integer.parseInt(tfYroom.getText());
-                    l = Integer.parseInt(tfLroom.getText());
-                    h = Integer.parseInt(tfHroom.getText());
-                    String n = tfroom.getText();
-                    // addRoom(x, y, l, h);
-                    addRoom(x, y, l, h, n);
 
                     proom.addMouseListener(new MouseAdapter() {
                         @Override
@@ -178,10 +167,6 @@ public class rooms {
     }
 
     private void moveRoom(MouseEvent e) {
-
-        // if (rooms.overlaps(selectedRoom)) {
-        // return false; // Room overlaps, can't add it
-
         if (selectedRoom != null) {
             // Temporarily set floor layout to null for free dragging
 
@@ -196,27 +181,11 @@ public class rooms {
             // Move the room to the new location
             int newX = thisX + xMoved;
             int newY = thisY + yMoved;
-            String s = selectedRoom.getName();
-
-            for (rooms rooms : rooms) {
-                if (rooms.getName().equals(s)) {
-                    if (!rooms.overlaps(rooms)) {
-                        // Room overlaps, can't add it
-                        selectedRoom.setLocation(newX, newY);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Room overlaps, can't add it");
-
-                    }
-                }
-            }
+            selectedRoom.setLocation(newX, newY);
 
             // Refresh the container to show the updated location
 
         }
     }
 
-    private Object getName() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getName'");
-    }
 }
