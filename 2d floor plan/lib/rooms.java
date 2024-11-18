@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
@@ -95,11 +96,14 @@ public class rooms {
 
         submit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                file f = new file();
                 System.out.println("Submit button clicked");
                 proom.setName(tfroom.getText());
                 try {
                     proom.setBounds(Integer.parseInt(tfXroom.getText()), Integer.parseInt(tfYroom.getText()),
                             Integer.parseInt(tfLroom.getText()), Integer.parseInt(tfHroom.getText()));
+                    // proom.setBackground(Color.decode("#" + type.getSelectedItem()));
+                    f.addpanel(proom);
 
                     int panelHeight = Integer.parseInt(tfLroom.getText());
                     int panelWidth = Integer.parseInt(tfHroom.getText());

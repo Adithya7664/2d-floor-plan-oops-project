@@ -14,7 +14,7 @@ class mainModel {
     frame f;
     RoomObjects o;
     rooms room;
-    DragPanel dp;
+    // DragPanel dp;
 
     // JPanel panelDB;
 
@@ -85,9 +85,36 @@ class mainModel {
         panelDB.setLayout(null);
 
         //
+        JButton save = new JButton("save");
+        save.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == save) {
+                    file ft = new file();
+                    ft.SafeFile();
+                }
+            }
+
+        });
+
+        JButton open = new JButton("open");
+
+        open.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                file ft = new file();
+                ft.loadp();
+            }
+
+        });
+
         JPanel panelSIDE1 = new JPanel();
         panelSIDE1.setBackground(Color.RED);
         panelSIDE1.setPreferredSize(new Dimension(150, 100));
+        panelSIDE1.add(open);
+        panelSIDE1.add(save);
         panelSIDE.add(panelSIDE1);
         //
 
@@ -148,14 +175,9 @@ class mainModel {
                         JLabel lbed = new JLabel();
                         lbed = m.o.Bed();
                         System.out.println("2");
-                        m.dp.DragPanel();
+                        // m.dp.DragPanel();
                         System.out.println("3");
                         // lbed.setVisible(true);
-                        JPanel lroom = new JPanel();
-                        lroom = m.room.rooms();
-                        lroom.add(lbed);
-                        panelDB.add(lroom);
-                        
 
                         break;
                     case "Table":

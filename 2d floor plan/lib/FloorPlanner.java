@@ -7,9 +7,11 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class data implements Serializable {
+public class FloorPlanner implements Serializable {
     // private String name;
     // private int x, y, width, height;
     // public data(int x, int y, int width, int height, String name) {
@@ -45,12 +47,7 @@ public class data implements Serializable {
     // ", x=" + x + ", y=" + y + "}";
     // }
     List<rooms> rooms = new ArrayList<>();
-
     ArrayList<JPanel> panelroom = new ArrayList<>();
-
-    // public int length() {
-    // return rooms.size();
-    // }
 
     public String[] getnames() {
         String[] names = new String[panelroom.size()];
@@ -63,36 +60,39 @@ public class data implements Serializable {
     }
 
     public int length() {
-        return rooms.size();
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'length'");
     }
 
-    public class FloorPlanner {
-        public void file() {
-            // List to hold room objects
+    }
 
-            // Add sample rooms
+    public FloorPlanner(){
 
-            // File to store serialized data
-            String filename = "floor_plan.ser";
+    public void file() {
+        // List to hold room objects
 
-            // Serialize the list of rooms
-            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
-                oos.writeObject(rooms);
-                System.out.println("Floor plan has been serialized and saved to " + filename);
-            } catch (IOException e) {
-                System.err.println("Error during serialization: " + e.getMessage());
+        // Add sample rooms
+
+        // File to store serialized data
+        String filename = "floor_plan.ser";
+
+        // Serialize the list of rooms
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
+            oos.writeObject(rooms);
+            System.out.println("Floor plan has been serialized and saved to " + filename);
+        } catch (IOException e) {
+            System.err.println("Error during serialization: " + e.getMessage());
+        }
+
+        // Deserialize the list of rooms
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
+            List<Room> deserializedRooms = (List<Room>) ois.readObject();
+            System.out.println("Deserialized floor plan:");
+            for (Room room : deserializedRooms) {
+                System.out.println(room);
             }
-
-            // Deserialize the list of rooms
-            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
-                List<Room> deserializedRooms = (List<Room>) ois.readObject();
-                System.out.println("Deserialized floor plan:");
-                for (Room room : deserializedRooms) {
-                    System.out.println(room);
-                }
-            } catch (IOException | ClassNotFoundException e) {
-                System.err.println("Error during deserialization: " + e.getMessage());
-            }
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("Error during deserialization: " + e.getMessage());
         }
     }
 }
