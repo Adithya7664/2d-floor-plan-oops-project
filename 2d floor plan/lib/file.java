@@ -1,4 +1,3 @@
-import java.awt.FlowLayout;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -246,21 +245,43 @@ public class file implements Serializable {
             if (loadedPanels != null) {
                 JFrame loadedFrame = new JFrame("Loaded Panels");
                 loadedFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                loadedFrame.setLayout(new FlowLayout());
+                loadedFrame.setLayout(null);
+
                 // file fff = new file();
+                roomsave panelData1;
 
-                for (roomsave panelData : loadedPanels) {
-                    JPanel panel = new JPanel();
+                // if (loadedPanels.size() == 0) {
+                // JPanel panel = new JPanel();
 
-                    panel.setBounds(panelData.setx(), panelData.sety(), panelData.setlength(), panelData.setheight());
-                    panel.setBackground(panelData.setcolor());
-                    panel.setName(panelData.setname());
+                // panel.setBounds(panelData1.setx(), panelData1.sety(), panelData1.setlength(),
+                // panelData1.setheight());
+                // panel.setBackground(panelData1.setcolor());
+                // panel.setName(panelData1.setname());
 
-                    // panel.add(label);
-                    loadedFrame.add(panel);
+                // // panel.add(label);
+                // System.out.println("color: " + panelData1.setcolor());
+                // panel.setVisible(true);
+                // loadedFrame.add(panel);
+
+                // } else
+                {
+
+                    for (roomsave panelData : loadedPanels) {
+                        JPanel panel = new JPanel();
+
+                        panel.setBounds(panelData.setx(), panelData.sety(), panelData.setlength(),
+                                panelData.setheight());
+                        panel.setBackground(panelData.setcolor());
+                        panel.setName(panelData.setname());
+
+                        // panel.add(label);
+                        System.out.println("color: " + panelData.setcolor());
+                        panel.setVisible(true);
+                        loadedFrame.add(panel);
+                    }
                 }
 
-                loadedFrame.setSize(400, 300);
+                loadedFrame.setSize(900, 900);
                 loadedFrame.setVisible(true);
             }
         }
