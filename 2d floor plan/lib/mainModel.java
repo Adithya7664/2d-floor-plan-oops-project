@@ -14,9 +14,15 @@ class mainModel {
     frame f;
     RoomObjects o;
     rooms room;
+    static JPanel panelt = new JPanel();
     // DragPanel dp;
 
     // JPanel panelDB;
+
+    public void getroom(JPanel proom) {
+        panelt = proom;
+
+    }
 
     public static void main(String[] args) {
 
@@ -39,7 +45,7 @@ class mainModel {
         m.f.setLayout(new BorderLayout());
 
         m.o = new RoomObjects();
-        m.room = new rooms(0, 0, 0, 0, "name");
+        m.room = new rooms();
 
         // SIDE PANNEL / SIDEBAR
         JPanel panelSIDE = new JPanel();
@@ -129,18 +135,23 @@ class mainModel {
         room.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                file f = new file();
                 String selectedRoom = (String) room.getSelectedItem();
                 System.out.println("Selected room: " + selectedRoom);
 
                 if ("DragAndDrop".equals(selectedRoom)) {
                     System.out.println("DragAndDrop option selected for Room");
                     // Add specific action here for "DragAndDrop"
+
                     JPanel proom = new JPanel();
                     proom = m.room.rooms();
+                    // if (f.isOverlapping(panelt)) {
+                    // proom = panelt;
 
-                    proom.setBounds(X, Y, length, height);
+                    // }
 
                     panelDB.add(proom);
+                    print();
                     panelDB.revalidate();
                     panelDB.repaint();
                     panelDB.setVisible(true);
@@ -263,6 +274,14 @@ class mainModel {
         paneltop.setVisible(true);
         panelSIDE.setVisible(true);
         m.f.setVisible(true);
+
+    }
+
+    public static void print() {
+        file f = new file();
+        String[] s = new String[f.length()];
+        s = f.getnames();
+        System.out.println(s);
 
     }
 }

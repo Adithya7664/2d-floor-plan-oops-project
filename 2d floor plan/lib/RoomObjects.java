@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class RoomObjects {
+
     JLabel selectedRoom;
     Point initialClick;
     Point PrevCoord;
@@ -41,10 +42,13 @@ public class RoomObjects {
 
         int i = 0;
         i = f.length();
+        System.out.println("length " + i);
         String[] roomnames = new String[i];
         roomnames = f.getnames();
+        System.out.println("roomnames " + roomnames);
+        System.out.println(roomnames);
         JComboBox<String> cbroom;
-        cbroom = new JComboBox<>(roomnames);
+        cbroom = new JComboBox(roomnames);
 
         JButton submit = new JButton("SUBMIT");
         JTextField tfbed = new JTextField("Enter the name of the bed", 20);
@@ -67,10 +71,14 @@ public class RoomObjects {
 
                     int i = 0;
                     i = f.length();
+                    System.out.println(i);
                     String[] roomnames = new String[i];
                     roomnames = f.getnames();
+                    System.out.println("?");
+                    System.out.println(roomnames);
+                    System.out.println("?");
                     JComboBox<String> cbroom;
-                    cbroom = new JComboBox<>();
+                    cbroom = new JComboBox<>(roomnames);
 
                     String name = tfbed.getText();
                     labelbed.setName(name);

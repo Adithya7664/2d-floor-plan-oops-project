@@ -6,8 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
@@ -17,54 +15,57 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class rooms {
-    String name;
-    int x, y, width, height;
 
-    public rooms(int x, int y, int width, int height, String name) {
-        this.name = name;
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-    }
+    // String name;
+    // int x, y, width, height;
+
+    // public rooms(int x, int y, int width, int height, String name) {
+    // this.name = name;
+    // this.x = x;
+    // this.y = y;
+    // this.width = width;
+    // this.height = height;
+    // }
 
     private JPanel selectedRoom;
     private Point initialClick;
     private Point PrevCoord;
 
-    public boolean overlaps(rooms other) {
-        return !(this.x + this.width <= other.x || // this room is to the left of
+    // public boolean overlaps(rooms other) {
+    // return !(this.x + this.width <= other.x || // this room is to the left of
+    // other
+    // this.x >= other.x + other.width || // this room is to the right of other
+    // this.y + this.height <= other.y || // this room is above other
+    // this.y >= other.y + other.height); // this room is below other
+    // }
 
-        // other
-                this.x >= other.x + other.width || // this room is to the right of other
-                this.y + this.height <= other.y || // this room is above other
-                this.y >= other.y + other.height); // this room is below other
-    }
+    // ArrayList<rooms> rooms = new ArrayList<>();
 
-    ArrayList<rooms> rooms = new ArrayList<>();
+    // public boolean addRoom(int x, int y, int width, int height, String name) {
+    // rooms newRoom = new rooms(x, y, width, height, name);
 
-    public boolean addRoom(int x, int y, int width, int height, String name) {
-        rooms newRoom = new rooms(x, y, width, height, name);
+    // // Check for overlaps with existing rooms
+    // for (rooms rooms : rooms) {
+    // if (rooms.overlaps(newRoom)) {
+    // return false; // Room overlaps, can't add it
+    // }
+    // }
 
-        // Check for overlaps with existing rooms
-        for (rooms rooms : rooms) {
-            if (rooms.overlaps(newRoom)) {
-                return false; // Room overlaps, can't add it
-            }
-        }
+    // // No overlap, add room to the roster
+    // rooms.add(newRoom);
+    // return true;
+    // }
 
-        // No overlap, add room to the roster
-        rooms.add(newRoom);
-        return true;
-    }
-
-    public ArrayList<rooms> getRooms() {
-        return rooms;
-    }
+    // public ArrayList<rooms> getRooms() {
+    // return rooms;
+    // }
 
     Boolean ea = false;
 
     public JPanel rooms() {
+
+        file f = new file();
+
         System.out.println("This is a room");
         frame room = new frame();
         room.setLayout(new GridLayout(10, 1, 3, 3));
@@ -103,7 +104,16 @@ public class rooms {
                     proom.setBounds(Integer.parseInt(tfXroom.getText()), Integer.parseInt(tfYroom.getText()),
                             Integer.parseInt(tfLroom.getText()), Integer.parseInt(tfHroom.getText()));
                     // proom.setBackground(Color.decode("#" + type.getSelectedItem()));
-                    f.addpanel(proom);
+                    // f.addPanel(proom);
+
+                    f.addPanel(proom, type.getActionCommand());
+                    f.getpanelname(tfroom.getText());
+                    // System.out.println("/");
+                    // System.out.println(tfroom.getText());
+                    // System.out.println("/");
+
+                    System.out.println(f.length());
+                    System.out.println(f.getnames());
 
                     int panelHeight = Integer.parseInt(tfLroom.getText());
                     int panelWidth = Integer.parseInt(tfHroom.getText());
@@ -165,8 +175,9 @@ public class rooms {
         room.add(tfHroom);
 
         room.add(submit);
-
         return proom;
+
+        // return proom;
 
     }
 
