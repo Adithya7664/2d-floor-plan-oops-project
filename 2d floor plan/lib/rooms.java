@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
@@ -16,7 +15,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class rooms {
-    static Array arr;
+    Array arr;
+
+    public rooms(Array array) {
+        this.arr = array;
+    }
     // static file f;
 
     // public file getFile() {
@@ -27,30 +30,9 @@ public class rooms {
     private Point initialClick;
     private Point PrevCoord;
 
-    // ArrayList<rooms> rooms = new ArrayList<>();
-
-    // public boolean addRoom(int x, int y, int width, int height, String name) {
-    // rooms newRoom = new rooms(x, y, width, height, name);
-
-    // // Check for overlaps with existing rooms
-    // for (rooms rooms : rooms) {
-    // if (rooms.overlaps(newRoom)) {
-    // return false; // Room overlaps, can't add it
-    // }
-    // }
-
-    // // No overlap, add room to the roster
-    // rooms.add(newRoom);
-    // return true;
-    // }
-
-    // public ArrayList<rooms> getRooms() {
-    // return rooms;
-    // }
-
     Boolean ea = false;
 
-    public JPanel rooms() {
+    public JPanel rooms(JPanel panelDB) {
 
         // f = new file();
 
@@ -74,7 +56,7 @@ public class rooms {
         String[] Stype = { "Hall", "Kitchen", "bedroom", "bathroom" };
 
         JComboBox<String> type = new JComboBox<>(Stype);
-        String namej = (String) comboBox.getSelectedItem();
+        String name = (String) type.getSelectedItem();
 
         JPanel proom = new JPanel();
         proom.setSize(100, 100);
@@ -94,6 +76,17 @@ public class rooms {
                             Integer.parseInt(tfLroom.getText()), Integer.parseInt(tfHroom.getText()));
                     // proom.setBackground(Color.decode("#" + type.getSelectedItem()));
                     // f.addPanel(proom);
+
+                    if (!arr.checkOverlaps(proom)) {
+
+                        arr.setroom(proom, name);
+                        panelDB.add(proom);
+                        System.out.println("proom is passed to setroom in array");
+                    } else {
+                        proom.setBounds(0, 0, 0, 0);
+
+                        System.out.println("proom i set not visible");
+                    }
 
                     // f.addPanel(proom, type.getActionCommand());
                     // f.getpanelname(tfroom.getText());
@@ -164,8 +157,11 @@ public class rooms {
         room.add(tfHroom);
 
         room.add(submit);
-        return proom;
+        if (!arr.checkOverlaps(proom)) {
+            return proom;
+        }
 
+        return null;
         // return proom;
 
     }

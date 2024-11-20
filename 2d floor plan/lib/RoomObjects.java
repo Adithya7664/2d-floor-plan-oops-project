@@ -3,6 +3,7 @@ import java.awt.FlowLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.server.RMIFailureHandler;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
@@ -14,12 +15,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class RoomObjects {
+    Array arr;
+
+    RoomObjects(Array array) {
+        arr = array;
+    }
 
     JLabel selectedRoom;
     Point initialClick;
     Point PrevCoord;
 
-    ImageIcon Bed = new ImageIcon("bed.png");
+    ImageIcon Bed = new ImageIcon(
+            "/Users/aderlasatvik/Downloads/java/2d-floor-plan-oops-project/2d floor plan/lib/bed.png");
     ImageIcon Table = new ImageIcon("table.png");
     ImageIcon Sofa = new ImageIcon();
     ImageIcon Chair = new ImageIcon();
@@ -40,15 +47,16 @@ public class RoomObjects {
         fbed.setSize(580, 400);
         fbed.setLayout(new FlowLayout());
 
-        // int i = 0;
-        // i = f.length();
-        // System.out.println("length " + i);
-        // String[] roomnames = new String[i];
-        // roomnames = f.getnames();
-        // System.out.println("roomnames " + roomnames);
-        // System.out.println(roomnames);
+        int i = arr.roomsave.size();
+        System.out.println("length " + i);
+        String[] roomnames = new String[i];
+        roomnames = arr.getroomnames();
+        System.out.println("roomnames " + roomnames);
+        System.out.println("?");
+        System.out.println(roomnames);
         JComboBox<String> cbroom;
         cbroom = new JComboBox(roomnames);
+        String roomname = (String) cbroom.getSelectedItem();
 
         JButton submit = new JButton("SUBMIT");
         JTextField tfbed = new JTextField("Enter the name of the bed", 20);
@@ -56,8 +64,9 @@ public class RoomObjects {
         JTextField tfYbed = new JTextField("Enter the virtical - position of the bed", 20);
         String[] position = { "virtical - top facing", "virtical - down facing", "horizontal east", "horizontal west" };
         JComboBox<String> cbposition = new JComboBox<>(position);
+        String pos = (String) cbposition.getSelectedItem();
 
-        String name = (String) cbroom.getSelectedItem();
+        // String name = (String) cbroom.getSelectedItem();
 
         JLabel labelbed = new JLabel();
 
@@ -69,16 +78,16 @@ public class RoomObjects {
 
                 if (e.getSource() == submit) {
 
-                    int i = 0;
-                    // i = f.length();
-                    System.out.println(i);
-                    String[] roomnames = new String[i];
-                    // roomnames = f.getnames();
-                    System.out.println("?");
-                    System.out.println(roomnames);
-                    System.out.println("?");
-                    JComboBox<String> cbroom;
-                    cbroom = new JComboBox<>(roomnames);
+                    // int i = 0;
+                    // // i = f.length();
+                    // System.out.println(i);
+                    // String[] roomnames = new String[i];
+                    // // roomnames = f.getnames();
+                    // System.out.println("?");
+                    // System.out.println(roomnames);
+                    // System.out.println("?");
+                    // JComboBox<String> cbroom;
+                    // cbroom = new JComboBox<>(roomnames);
 
                     String name = tfbed.getText();
                     labelbed.setName(name);
@@ -92,6 +101,9 @@ public class RoomObjects {
                     labelbed.setVerticalAlignment(JLabel.CENTER);
                     labelbed.setOpaque(true);
                     labelbed.setVisible(true);
+
+                    String roomtype = arr.getroomtype(roomname);
+                    arr.setfurniture(labelbed, roomname, roomtype);
                     labelbed.addMouseListener(new MouseAdapter() {
                         @Override
                         public void mousePressed(MouseEvent e) {

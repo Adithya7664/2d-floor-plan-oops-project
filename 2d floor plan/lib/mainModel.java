@@ -12,8 +12,16 @@ import javax.swing.JPanel;
 class mainModel {
 
     frame f;
-    RoomObjects o;
-    rooms room;
+
+    static Array arr = new Array();
+    rooms room = new rooms(arr);
+    RoomObjects o = new RoomObjects(arr);
+    filesave fs = new filesave(arr);
+
+    public void getarray(Array array) {
+        arr = array;
+    }
+
     // public mainModel(RoomObjects ro, rooms rooms) {
     // this.o=ro;
     // this.room=rooms;
@@ -48,9 +56,6 @@ class mainModel {
         mainModel m = new mainModel();
         m.f = new frame();
         m.f.setLayout(new BorderLayout());
-
-        m.o = new RoomObjects();
-        m.room = new rooms();
 
         // SIDE PANNEL / SIDEBAR
         JPanel panelSIDE = new JPanel();
@@ -102,8 +107,8 @@ class mainModel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == save) {
-                    // file ft = new file();
-                    // ft.SafeFile();
+
+                    m.fs.SafeFile();
                 }
             }
 
@@ -115,7 +120,6 @@ class mainModel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                // file ft = new file();
                 // ft.loadp();
             }
 
@@ -148,14 +152,19 @@ class mainModel {
                     System.out.println("DragAndDrop option selected for Room");
                     // Add specific action here for "DragAndDrop"
 
-                    JPanel proom = new JPanel();
-                    proom = m.room.rooms();
-                    // if (f.isOverlapping(panelt)) {
-                    // proom = panelt;
+                    // JPanel proom = new JPanel();
+                    // proom =
+                    // String name = proom.getName();
+                    // System.out.println("Room name: " + name);
 
-                    // }
+                    // proom.setVisible(false);
+                    if (!arr.checkOverlaps(m.room.rooms(panelDB))) {
+                        System.out.println("panel is added to paneldb");
+                        // panelDB.add(proom);
+                    } else {
 
-                    panelDB.add(proom);
+                    }
+
                     print();
                     panelDB.revalidate();
                     panelDB.repaint();
@@ -289,4 +298,5 @@ class mainModel {
         // System.out.println(s);
 
     }
+
 }
