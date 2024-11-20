@@ -14,15 +14,20 @@ class mainModel {
     frame f;
     RoomObjects o;
     rooms room;
-    static JPanel panelt = new JPanel();
+    // public mainModel(RoomObjects ro, rooms rooms) {
+    // this.o=ro;
+    // this.room=rooms;
+    // }
+
+    // static JPanel panelt = new JPanel();
     // DragPanel dp;
 
     // JPanel panelDB;
 
-    public void getroom(JPanel proom) {
-        panelt = proom;
+    // public void getroom(JPanel proom) {
+    // panelt = proom;
 
-    }
+    // }
 
     public static void main(String[] args) {
 
@@ -35,10 +40,10 @@ class mainModel {
          * }
          */
 
-        int X = 0;
-        int Y = 0;
-        int length = 0;
-        int height = 0;
+        // int X = 0;
+        // int Y = 0;
+        // int length = 0;
+        // int height = 0;
 
         mainModel m = new mainModel();
         m.f = new frame();
@@ -97,8 +102,8 @@ class mainModel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == save) {
-                    file ft = new file();
-                    ft.SafeFile();
+                    // file ft = new file();
+                    // ft.SafeFile();
                 }
             }
 
@@ -110,8 +115,8 @@ class mainModel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                file ft = new file();
-                ft.loadp();
+                // file ft = new file();
+                // ft.loadp();
             }
 
         });
@@ -135,7 +140,7 @@ class mainModel {
         room.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                file f = new file();
+                // file f = new file();
                 String selectedRoom = (String) room.getSelectedItem();
                 System.out.println("Selected room: " + selectedRoom);
 
@@ -278,10 +283,10 @@ class mainModel {
     }
 
     public static void print() {
-        file f = new file();
-        String[] s = new String[f.length()];
-        s = f.getnames();
-        System.out.println(s);
+        // file f = new file();
+        // String[] s = new String[f.length()];
+        // s = f.getnames();
+        // System.out.println(s);
 
     }
 }

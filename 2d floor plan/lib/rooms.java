@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
@@ -15,29 +16,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class rooms {
+    static Array arr;
+    // static file f;
 
-    // String name;
-    // int x, y, width, height;
-
-    // public rooms(int x, int y, int width, int height, String name) {
-    // this.name = name;
-    // this.x = x;
-    // this.y = y;
-    // this.width = width;
-    // this.height = height;
+    // public file getFile() {
+    // return f;
     // }
 
     private JPanel selectedRoom;
     private Point initialClick;
     private Point PrevCoord;
-
-    // public boolean overlaps(rooms other) {
-    // return !(this.x + this.width <= other.x || // this room is to the left of
-    // other
-    // this.x >= other.x + other.width || // this room is to the right of other
-    // this.y + this.height <= other.y || // this room is above other
-    // this.y >= other.y + other.height); // this room is below other
-    // }
 
     // ArrayList<rooms> rooms = new ArrayList<>();
 
@@ -64,7 +52,7 @@ public class rooms {
 
     public JPanel rooms() {
 
-        file f = new file();
+        // f = new file();
 
         System.out.println("This is a room");
         frame room = new frame();
@@ -86,6 +74,7 @@ public class rooms {
         String[] Stype = { "Hall", "Kitchen", "bedroom", "bathroom" };
 
         JComboBox<String> type = new JComboBox<>(Stype);
+        String namej = (String) comboBox.getSelectedItem();
 
         JPanel proom = new JPanel();
         proom.setSize(100, 100);
@@ -97,7 +86,7 @@ public class rooms {
 
         submit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                file f = new file();
+
                 System.out.println("Submit button clicked");
                 proom.setName(tfroom.getText());
                 try {
@@ -106,14 +95,14 @@ public class rooms {
                     // proom.setBackground(Color.decode("#" + type.getSelectedItem()));
                     // f.addPanel(proom);
 
-                    f.addPanel(proom, type.getActionCommand());
-                    f.getpanelname(tfroom.getText());
+                    // f.addPanel(proom, type.getActionCommand());
+                    // f.getpanelname(tfroom.getText());
                     // System.out.println("/");
                     // System.out.println(tfroom.getText());
                     // System.out.println("/");
 
-                    System.out.println(f.length());
-                    System.out.println(f.getnames());
+                    // System.out.println(f.length());
+                    // System.out.println(f.getnames());
 
                     int panelHeight = Integer.parseInt(tfLroom.getText());
                     int panelWidth = Integer.parseInt(tfHroom.getText());

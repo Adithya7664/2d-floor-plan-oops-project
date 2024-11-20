@@ -33,20 +33,20 @@ public class RoomObjects {
 
     // this is a comment
     public JLabel Bed() {
-        file f = new file();
+        // file f = new file();
         frame fbed = new frame();
         fbed.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         fbed.setBackground(Color.BLACK);
         fbed.setSize(580, 400);
         fbed.setLayout(new FlowLayout());
 
-        int i = 0;
-        i = f.length();
-        System.out.println("length " + i);
-        String[] roomnames = new String[i];
-        roomnames = f.getnames();
-        System.out.println("roomnames " + roomnames);
-        System.out.println(roomnames);
+        // int i = 0;
+        // i = f.length();
+        // System.out.println("length " + i);
+        // String[] roomnames = new String[i];
+        // roomnames = f.getnames();
+        // System.out.println("roomnames " + roomnames);
+        // System.out.println(roomnames);
         JComboBox<String> cbroom;
         cbroom = new JComboBox(roomnames);
 
@@ -65,15 +65,15 @@ public class RoomObjects {
 
             public void actionPerformed(ActionEvent e) {
 
-                file f = new file();
+                // file f = new file();
 
                 if (e.getSource() == submit) {
 
                     int i = 0;
-                    i = f.length();
+                    // i = f.length();
                     System.out.println(i);
                     String[] roomnames = new String[i];
-                    roomnames = f.getnames();
+                    // roomnames = f.getnames();
                     System.out.println("?");
                     System.out.println(roomnames);
                     System.out.println("?");
@@ -130,7 +130,7 @@ public class RoomObjects {
     }
 
     public JLabel Table() {
-        file f = new file();
+        // file f = new file();
         frame ftable = new frame();
         ftable.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         ftable.setSize(580, 400);

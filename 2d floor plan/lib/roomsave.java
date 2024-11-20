@@ -17,35 +17,35 @@ public class roomsave implements Serializable {
         this.height = height;
         this.c = c;
         this.name = name;
-        this.type = type;
+        // this.type = type;
     }
 
-    public int setlength() {
+    public int getlength() {
         return length;
     }
 
-    public Color setcolor() {
+    public Color getcolor() {
         return c;
     }
 
-    public int setx() {
+    public int getx() {
         return x;
     }
 
-    public int sety() {
+    public int gety() {
         return y;
     }
 
-    public int setheight() {
+    public int getheight() {
         return height;
     }
 
-    public String setname() {
+    public String getname() {
         return name;
     }
 
-    public String settype() {
-        return type;
-    }
+    // public String gettype() {
+    // return type;
+    // }
 
 }
