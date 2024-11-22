@@ -1,12 +1,18 @@
-public class furnituresave {
+import java.io.Serializable;
+import javax.swing.JLabel;
+
+public class furnituresave implements Serializable {
     // JPanel panel;
     String nameroom;
     String roomtype;
     String furniturename;
     int xpos;
     int ypos;
+    JLabel label;
+    int lengthfur;
+    int heightfur;
 
-    furnituresave(String nameroom, String roomtype, String furniturename, int xpos, int ypos) {
+    furnituresave(String nameroom, String roomtype, String furniturename, int xpos, int ypos, JLabel label) {
 
         // this.panel = panel;
         this.nameroom = nameroom;
@@ -14,6 +20,7 @@ public class furnituresave {
         this.furniturename = furniturename;
         this.xpos = xpos;
         this.ypos = ypos;
+        this.label = label;
     }
 
     public void setnameroom(String nameroom1) {
@@ -54,5 +61,17 @@ public class furnituresave {
 
     public int getypos() {
         return ypos;
+    }
+
+    public JLabel getlabel() {
+        return label;
+    }
+
+    public int getlengthfur() {
+        return lengthfur;
+    }
+
+    public int getheightfur() {
+        return heightfur;
     }
 }

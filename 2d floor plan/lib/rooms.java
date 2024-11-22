@@ -181,7 +181,9 @@ public class rooms {
             // Move the room to the new location
             int newX = thisX + xMoved;
             int newY = thisY + yMoved;
-            selectedRoom.setLocation(newX, newY);
+            if (!arr.checkOverlapsml(selectedRoom, newX, newY)) {
+                // selectedRoom.setLocation(newX, newY);
+            }
 
             // Refresh the container to show the updated location
 

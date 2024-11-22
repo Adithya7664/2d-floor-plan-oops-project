@@ -22,36 +22,7 @@ class mainModel {
         arr = array;
     }
 
-    // public mainModel(RoomObjects ro, rooms rooms) {
-    // this.o=ro;
-    // this.room=rooms;
-    // }
-
-    // static JPanel panelt = new JPanel();
-    // DragPanel dp;
-
-    // JPanel panelDB;
-
-    // public void getroom(JPanel proom) {
-    // panelt = proom;
-
-    // }
-
     public static void main(String[] args) {
-
-        // file saving
-        /*
-         * public void SaveFile(){
-         * JFileChooser fileChooser = new JFileChooser();
-         * int option = fileChooser.showSaveDialog(frame);
-         * 
-         * }
-         */
-
-        // int X = 0;
-        // int Y = 0;
-        // int length = 0;
-        // int height = 0;
 
         mainModel m = new mainModel();
         m.f = new frame();
@@ -120,7 +91,7 @@ class mainModel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                // ft.loadp();
+                m.fs.loadp(panelDB);
             }
 
         });
@@ -134,7 +105,22 @@ class mainModel {
         //
 
         //
+        JButton ClearAll = new JButton("ClearAll");
+
+        ClearAll.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelDB.removeAll();
+                arr.roomsave.clear();
+                arr.furnituresave1.clear();
+                panelDB.revalidate();
+                panelDB.repaint();
+            }
+
+        });
         JPanel panelSIDE4 = new JPanel();
+        panelSIDE4.add(ClearAll);
         panelSIDE4.setBackground(Color.BLACK);
         panelSIDE4.setPreferredSize(new Dimension(150, 100));
         panelSIDE.add(panelSIDE4);
@@ -194,16 +180,9 @@ class mainModel {
                     case "Bed":
                         System.out.println("Bed selected");
                         // Add specific action for Bed
-
-                        System.out.println("1");
-
                         JLabel lbed = new JLabel();
                         lbed = m.o.Bed();
-                        System.out.println("2");
-                        // m.dp.DragPanel();
-                        System.out.println("3");
-                        // lbed.setVisible(true);
-
+                        panelDB.add(lbed);
                         break;
                     case "Table":
                         System.out.println("Table selected");

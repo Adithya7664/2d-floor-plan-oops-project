@@ -72,6 +72,12 @@ public class roomsave implements Serializable {
         this.panel.add(label);
     }
 
+    public void panelml(int x, int y) {
+        this.x = x;
+        this.y = y;
+
+    }
+
     // public String gettype() {
     // return type;
     // }
