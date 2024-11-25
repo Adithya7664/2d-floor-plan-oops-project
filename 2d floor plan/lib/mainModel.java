@@ -12,17 +12,21 @@ import javax.swing.JPanel;
 class mainModel {
 
     frame f;
-    RoomObjects o;
-    rooms room;
+
+    static Array arr = new Array();
+    rooms room = new rooms(arr);
+    RoomObjects o = new RoomObjects(arr);
+    filesave fs = new filesave(arr);
+
+    public void getarray(Array array) {
+        arr = array;
+    }
 
     public static void main(String[] args) {
+
         mainModel m = new mainModel();
         m.f = new frame();
         m.f.setLayout(new BorderLayout());
-
-        m.o = new RoomObjects();
-
-        m.room = new rooms();
 
         // SIDE PANNEL / SIDEBAR
         JPanel panelSIDE = new JPanel();
@@ -34,10 +38,10 @@ class mainModel {
         // INSTRUMENT PANNEL / TOPBAR /
         JPanel paneltop = new JPanel();
         paneltop.setBackground(Color.BLACK);
-        paneltop.setPreferredSize(new Dimension(100, 70));
+        paneltop.setPreferredSize(new Dimension(100, 30));
         m.f.add(paneltop, BorderLayout.NORTH);
         // layout = = grid layout
-        paneltop.setLayout(new GridLayout(1, 10, 3, 3));
+        paneltop.setLayout(new GridLayout(1, 10, 0, 3));
         // for horizontal buttons
 
         // top. pannel buttons and checkbox
@@ -65,34 +69,91 @@ class mainModel {
         panelDB.setBackground(Color.BLUE);
         panelDB.setPreferredSize(new Dimension(100, 100));
         m.f.add(panelDB, BorderLayout.CENTER);
+        panelDB.setLayout(null);
 
         //
+        JButton save = new JButton("save");
+        save.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == save) {
+
+                    m.fs.SafeFile();
+                }
+            }
+
+        });
+
+        JButton open = new JButton("open");
+
+        open.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                m.fs.loadp(panelDB);
+            }
+
+        });
+
         JPanel panelSIDE1 = new JPanel();
         panelSIDE1.setBackground(Color.RED);
         panelSIDE1.setPreferredSize(new Dimension(150, 100));
+        panelSIDE1.add(open);
+        panelSIDE1.add(save);
         panelSIDE.add(panelSIDE1);
         //
 
         //
+        JButton ClearAll = new JButton("ClearAll");
+
+        ClearAll.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelDB.removeAll();
+                arr.roomsave.clear();
+                arr.furnituresave1.clear();
+                panelDB.revalidate();
+                panelDB.repaint();
+            }
+
+        });
         JPanel panelSIDE4 = new JPanel();
+        panelSIDE4.add(ClearAll);
         panelSIDE4.setBackground(Color.BLACK);
         panelSIDE4.setPreferredSize(new Dimension(150, 100));
-        panelSIDE.add(panelSIDE4, BorderLayout.SOUTH);
+        panelSIDE.add(panelSIDE4);
         //
 
         // Add action listener for the room combo box
         room.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // file f = new file();
                 String selectedRoom = (String) room.getSelectedItem();
                 System.out.println("Selected room: " + selectedRoom);
 
                 if ("DragAndDrop".equals(selectedRoom)) {
                     System.out.println("DragAndDrop option selected for Room");
                     // Add specific action here for "DragAndDrop"
-                    JPanel proom = new JPanel();
-                    proom = m.room.rooms();
-                    panelDB.add(proom);
+
+                    // JPanel proom = new JPanel();
+                    // proom =
+                    // String name = proom.getName();
+                    // System.out.println("Room name: " + name);
+
+                    // proom.setVisible(false);
+                    if (!arr.checkOverlaps(m.room.rooms(panelDB))) {
+                        System.out.println("panel is added to paneldb");
+                        // panelDB.add(proom);
+                    } else {
+
+                    }
+
+                    print();
+                    panelDB.revalidate();
+                    panelDB.repaint();
                     panelDB.setVisible(true);
 
                 } else if ("FromPreviousROOM".equals(selectedRoom)) {
@@ -122,7 +183,6 @@ class mainModel {
                         JLabel lbed = new JLabel();
                         lbed = m.o.Bed();
                         panelDB.add(lbed);
-
                         break;
                     case "Table":
                         System.out.println("Table selected");
@@ -207,6 +267,14 @@ class mainModel {
         paneltop.setVisible(true);
         panelSIDE.setVisible(true);
         m.f.setVisible(true);
+
+    }
+
+    public static void print() {
+        // file f = new file();
+        // String[] s = new String[f.length()];
+        // s = f.getnames();
+        // System.out.println(s);
 
     }
 
