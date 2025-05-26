@@ -1,2 +1,3 @@
 # 2d-floor-plan-oops-project
-oops project of group n.o "19"
+
+run the 2d-floor-plan-oops-project.jar file to exec the project
